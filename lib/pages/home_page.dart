@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_study/pages/pdf_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key, this.title});
   final title;
@@ -10,7 +12,19 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: Container(
         child: Column(
-          children: [],
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PdfPage(),
+                  ),
+                );
+              },
+              child: Text('Data List App'),
+            )
+          ],
         ),
       ),
     );
