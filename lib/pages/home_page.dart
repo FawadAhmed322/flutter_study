@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/pages/message_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key, this.title});
@@ -10,7 +11,19 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: Container(
         child: Column(
-          children: [],
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MessagePage(),
+                  ),
+                );
+              },
+              child: Text('Go to Message Page'),
+            )
+          ],
         ),
       ),
     );
