@@ -11,9 +11,10 @@ class MessagePage extends StatefulWidget {
 
 class _MessagePageState extends State<MessagePage> {
   TextEditingController _textController = TextEditingController();
+  TextEditingController _apiKeyController = TextEditingController();
+
   List<String> _messages = [];
   FocusNode? _focusNode = FocusNode();
-  final apiKey = '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';
 
   void _submitMessage() {
     setState(() {
@@ -26,6 +27,7 @@ class _MessagePageState extends State<MessagePage> {
   }
 
   Future<void> getCompletion(String model, String prompt) async {
+    final apiKey = _apiKeyController.text;
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/completions'),
       headers: {
@@ -59,6 +61,15 @@ class _MessagePageState extends State<MessagePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Expanded(
+              child: TextField(
+                controller: _apiKeyController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter your ChatGPT Api Key',
+                ),
+              ),
+            ),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
